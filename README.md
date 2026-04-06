@@ -1,60 +1,84 @@
 # P Λ R Λ D I T I (परादिति) - AI-Native Economic Mobility Platform
 
-**Founder:** PARAS AGRAWAL  
-**Status:** Patent-Ready | **Version:** 5.4 (Stable)
+<p align="center">
+  <img src="frontend/logo.png" width="200" alt="Paraditi Logo">
+</p>
 
-**P Λ R Λ D I T I** is the evolution of the SAHAJ project. It is Bharat's first **AI-Native Economic Mobility Platform**. Unlike traditional portals that just *list* schemes, P Λ R Λ D I T I acts as an intelligent agent that *guarantees* discovery, *analyzes* eligibility gaps, and *guides* users from application to approval.
+**Founder:** PARAS AGRAWAL  
+**Status:** Patent-Ready | **Version:** 5.4 (Stable)  
+**Track:** AI-Powered Social Impact (Economic Mobility)
 
 ---
 
-## 🚀 Key Innovations (Patent Claims A-V)
+## 🚀 The Vision: Beyond Portals, Towards Intelligent Mobility
+
+**P Λ R Λ D I T I** is Bharat's first **AI-Native Economic Mobility Platform**. Modern welfare systems suffer from a $1.2 Trillion discovery gap. While current government portals act as passive "listing" pages, P Λ R Λ D I T I operates as an **Autonomous Agent** that guarantees benefit discovery, analyzes eligibility friction, and guides citizens from application to credit-worthiness.
+
+### 🏛️ Commercial Deployments & Institutional Deliveries
+- **SPA Master Platform (2026)**: Lead Architecture for a multi-portal e-commerce/welfare ecosystem (National Geographic & Shraddha Arts). Deployed & Operational.
+
+---
+
+## 🛡️ Deep Tech Innovations (The 21 Patent Claims)
+
+Paraditi is engineered around a robust intellectual property framework (Claims A-V) ensuring high-fidelity service delivery:
 
 ### 1. 🤖 Aditi AI & Dialect Mapper (Claim I)
 **Beyond Keywords:** Aditi understands intent (e.g., *"I want to start a shop"* → *MUDRA Loan*) in **English, Hindi, Bhojpuri, and Maithili**.
-- **Tech**: Voice-first intent discovery + NLP.
-- **Impact**: Breaks language barriers for 800M+ non-English speakers.
+- **Tech**: Voice-first intent discovery + Transformer-based NLP.
 
-### 2. 🛡️ Self-Healing Retrieval & Fallback Mesh (Claim A)
-**Zero Downtime:** Combining real-time health-checking with an "Active-Active" data strategy.
-- **Novelty**: Hot-swaps between unstable official APIs and a cryptographically-verified local "Fallback Mesh".
+### 2. ⚡ Self-Healing Fallback Mesh (Claim A)
+**Zero Downtime Architecture:** A cryptographically verified local "Fallback Mesh" that hot-swaps when official API Setu gateways are unstable.
+- **Novelty**: Prevents "Benefit Denial" due to infrastructure failure.
 
-### 3. 🪙 Programmable Benefit Tokenizer (Claim O)
-**Leakage-Proof Welfare:** Issues smart-vouchers linked to e-RUPI.
-- **Control**: Tokens are restricted to specific vendor categories (e.g., Fertilizer only), ensuring funds are used for the intended purpose.
+### 3. 📈 UBS: Universal Beneficiary Score (Claim F & R)
+**Social Credit for the Unbanked:** Converts a citizen's welfare history and scheme interaction into a credit-worthiness rating.
+- **Outcome**: Unlocks micro-credit for those without traditional collateral.
 
-### 4. 🤝 Decentralized Agent Network (Claim P)
-**Physical Triage:** A gig-economy framework for "Sahayaks" (Local Agents).
-- **Incentive**: Agents earn success-based micro-commissions for assisting offline citizens.
+### 4. 🪙 Programmable Benefit Tokenizer (Claim O)
+**Leakage-Proof Welfare:** Issues smart-vouchers linked to **e-RUPI** that are restricted to specific vendor categories (e.g., Fertilizer, Education).
 
-### 5. 📈 Actuarial Social Risk Model (Claim R)
-**Social Credit:** Converts UBS (Universal Beneficiary Score) and welfare history into a credit-worthiness rating.
-- **Outcome**: Unlocks micro-credit for the unbanked based on government relationship history.
-    
-    ### 6. 🔮 Future Horizon (Claims S-U)
-    - **Pre-emptive Welfare (Claim S)**: Satellite-triggered crop insurance.
-    - **Sovereign Identity (Claim T)**: Zero-Knowledge Proofs on Edge AI.
-    - **Social Impact Bonds (Claim U)**: P2P funding for education gaps.
-    - **Hybrid State Security Mesh (Claim V)**: Resilient "Fail-Safe" in-memory protection when diverse infrastructure fails.
+### 5. 🔮 Active-Active State Security Mesh (Claim V)
+**Resilient Fail-Safe**: In-memory protection and hybrid state management ensuring system integrity when diverse infrastructure nodes fail.
 
 ---
 
-## 🏛️ Commercial Deployments & Institutional Deliveries
+## 🛠️ Technical Stack (Cyber-Dark Ecosystem)
 
-Paraditi Corp is more than a research framework; it is a proven partner for high-scale enterprise engineering.
-
-### **1. SPA Master Platform (2026)**
-- **Role:** Lead Architecture & Commercial Delivery.
-- **Scope:** Multi-portal e-commerce ecosystem for global product distribution (National Geographic & Shraddha Arts).
-- **Metric:** Engineered a high-fidelity retail node with AI-native automation and decentralized backend management.
-- **Status:** **Commercially Deployed & Operational.**
+- **AI/ML**: `sentence-transformers`, `transformers`, `torch`, `Tesseract OCR`, `Fuzzy Logic`.
+- **Backend Architecture**: Python 3.12, Flask, SQLAlchemy, Gunicorn (Production-ready).
+- **Security Engineering**: Argon2 Hashing, Bleach Sanitization, WAF-lite (Claim D), Immutable Ledger (Claim C).
+- **Frontend Aesthetic**: "Cyber-Dark" Design System with Glassmorphism and Aditi AI Orb Integration.
 
 ---
 
-## 🛠️ Technical Stack
-- **Core**: Python 3.12+, Flask, SQLAlchemy (PostgreSQL ready).
-- **AI/ML**: Sentence-Transformers, Tesseract OCR, Fuzzy Logic, Probability Models.
-- **Frontend**: Glassmorphism UI (CSS3), Vanilla JS, Aditi AI Orb Interface.
-- **Security**: Argon2 Hashing, Bleach Sanitization, WAF-lite (Claim D), Immutable Ledger (Claim C), Hybrid State Security Mesh (Claim V).
+## 📦 Professional Deployment & Running
+
+### Local Quick-Start (Senior Dev Mode)
+1. **Sync Environment**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. **Initialize Architecture**:
+   ```bash
+   python scripts/init_db.py
+   python scripts/seed_data.py
+   ```
+3. **Launch Engine**:
+   ```bash
+   python backend/app.py
+   ```
+
+### Docker/Cloud Run Readiness
+The platform is fully containerized for Google Cloud Run:
+```bash
+docker build -t gcr.io/[PROJECT-ID]/paraditi:latest .
+```
 
 ---
-*P Λ R Λ D I T I: Transforming Citizenship into Opportunity.*
+
+## 🏛️ IP & Ethics
+P Λ R Λ D I T I is proprietary software. All rights reserved by **PARAS AGRAWAL**. 
+Patent Claims A-V are documented in `IP_MANIFEST.md`.
+
+*Transforming Citizenship into Opportunity.*
