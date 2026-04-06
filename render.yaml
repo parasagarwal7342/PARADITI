@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: paraditi-mobility-platform
+    env: docker
+    plan: free # Use the free tier
+    region: singapore # Closest to Bharat/India
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    healthCheckPath: /
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        value: sqlite:///instance/sahaj.db
+      - key: SECRET_KEY
+        value: prod-secret-key-hack2skill
+      - key: JWT_SECRET_KEY
+        value: prod-jwt-secret-key-hack2skill
+      - key: USE_TFIDF
+        value: "1"
+    disk:
+      name: sahaj-storage
+      mountPath: /app/instance
+      sizeGB: 1
