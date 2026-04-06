@@ -38,6 +38,18 @@
 
 ---
 
+## 🏛️ Commercial Deployments & Institutional Deliveries
+
+Paraditi Corp is more than a research framework; it is a proven partner for high-scale enterprise engineering.
+
+### **1. SPA Master Platform (2026)**
+- **Role:** Lead Architecture & Commercial Delivery.
+- **Scope:** Multi-portal e-commerce ecosystem for global product distribution (National Geographic & Shraddha Arts).
+- **Metric:** Engineered a high-fidelity retail node with AI-native automation and decentralized backend management.
+- **Status:** **Commercially Deployed & Operational.**
+
+---
+
 ## 🛠️ Technical Stack
 - **Core**: Python 3.12+, Flask, SQLAlchemy (PostgreSQL ready).
 - **AI/ML**: Sentence-Transformers, Tesseract OCR, Fuzzy Logic, Probability Models.
