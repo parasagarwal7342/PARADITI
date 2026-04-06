@@ -16,10 +16,15 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = 86400  # 24 hours
     
     # Database configuration
-    # Ensure absolute path to avoid confusion between backend/instance and root/instance
     BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
     DB_PATH = os.path.join(BASE_DIR, 'instance', 'paraditi.db')
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', f'sqlite:///{DB_PATH}')
+    
+    # In production, if no DATABASE_URL is set, we default to in-memory for safety on ephemeral tiers
+    if os.getenv('FLASK_ENV') == 'production':
+        SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite://')
+    else:
+        SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', f'sqlite:///{DB_PATH}')
+    
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     
     # Redis Configuration
@@ -50,8 +55,6 @@ class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
     FLASK_ENV = 'production'
-    # Use in-memory DB for robust, zero-touch hackathon preview
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite://')
 
 class TestingConfig(Config):
     """Testing configuration"""

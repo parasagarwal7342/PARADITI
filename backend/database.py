@@ -1,9 +1,4 @@
-"""
-P Λ R Λ D I T I (परादिति) - AI-Powered Government Scheme Gateway
-Copyright (c) 2026 P Λ R Λ D I T I. All rights reserved.
-Proprietary and Confidential. Unauthorized copying is strictly prohibited.
-Patent Pending: Claims A-U (See IP_MANIFEST.md).
-"""
+import os
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -15,18 +10,26 @@ def init_db(app):
     with app.app_context():
         # Import models to ensure they are registered with SQLAlchemy
         from backend.models import User, Scheme, UserScheme, Document, Application
-        from backend.services.seeder import seed_production_data
         
         # Create all tables
         db.create_all()
         
-        # Auto-seed in production/ephemeral environments
+        # AUTO-SEEDING FOR PRODUCTION (Live Preview)
+        # If we are using an in-memory database in production, we must seed it immediately
+        is_production = (os.getenv('FLASK_ENV') == 'production')
+        is_in_memory = (app.config.get('SQLALCHEMY_DATABASE_URI') == 'sqlite://')
+        
+        if is_production and is_in_memory:
+            from scripts.seed_data import seed_db
+            try:
+                seed_db(app)
+                print("Production Auto-Seed: Database populated successfully.")
+            except Exception as e:
+                print(f"Production Auto-Seed Error: {str(e)}")
+        
         try:
-            db_uri = str(app.config.get('SQLALCHEMY_DATABASE_URI', ''))
-            if 'sqlite://' in db_uri:
-                 seed_production_data()
-            print("Database initialized and auto-seeded successfully!")
-        except Exception as e:
-            print(f"Auto-seed warning: {str(e)}")
+            print("Database initialized successfully!")
+        except (ValueError, OSError):
+            pass  # stdout may be closed in background process
     
     return db

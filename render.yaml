@@ -16,7 +16,5 @@ services:
         value: prod-jwt-secret-key-hack2skill
       - key: USE_TFIDF
         value: "1"
-      - key: TRANSFORMERS_CACHE
-        value: "/tmp/transformers_cache"
-      - key: SIMILARITY_THRESHOLD
-        value: "0.2"
+      - key: WEB_CONCURRENCY
+        value: "1"
