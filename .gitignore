@@ -1,0 +1,67 @@
+# P Λ R Λ D I T I .gitignore
+
+# Environment
+.env
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Flask / instance
+instance/*.db
+instance/*.sqlite
+*.db
+!instance/.gitkeep
+
+# Uploads
+uploads/*
+!uploads/.gitkeep
+
+# Generated Reports
+scripts/*.pdf
+scripts/*.pptx
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# ML / cache
+*.pkl
+.cache/

@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=backend.app:create_app()
+      - FLASK_ENV=production
+      # Switch to Postgres when ready (uncomment below)
+      # - DATABASE_URL=postgresql://sahaj:password@db:5432/sahaj_db
+      # Use SQLite for now to match current state unless explicit migration
+      - DATABASE_URL=sqlite:///instance/sahaj.db
+      - REDIS_URL=redis://redis:6379/0
+      - USE_TFIDF=1
+      - SECRET_KEY=prod-secret-key-change-me
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./uploads:/app/uploads
+      - ./instance:/app/instance
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=sahaj
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=sahaj_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+
+# Professional Firewall Recommendation: 
+# To deploy a production-grade firewall, use BunkerWeb (Next-gen WAF).
+# Uncomment the section below and point your domain to it.
+#
+#   firewall:
+#     image: bunkerity/bunkerweb:1.5.8
+#     ports:
+#       - "80:8080"
+#       - "443:8443"
+#     environment:
+#       - SERVER_NAME=yourdomain.com # Replace with your domain
+#       - API_WHITELIST_IP=127.0.0.1
+#       - SERVE_FILES=no
+#       - REVERSE_PROXY_URL=/
+#       - REVERSE_PROXY_HOST=http://web:5000
+#       - USE_MODSECURITY=yes
+#       - USE_ANTIBOT=yes
+#       - USE_LIMIT_REQ=yes
+#     depends_on:
+#       - web
+
+volumes:
+  postgres_data:
+  redis_data:

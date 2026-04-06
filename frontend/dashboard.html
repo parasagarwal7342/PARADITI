@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - P &Lambda; R &Lambda; D I T I (परादिति)</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <div class="logo-display-slot">
+                    <img src="logo.png" alt="P Λ R Λ D I T I Logo" class="brand-logo-img">
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">P &Lambda; R &Lambda; D I T I</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="#" id="profileLink">Profile</a>
+                <a href="#" id="logoutLink">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="userName">User</span>!</h2>
+                <p>Unlock limitless value with your personalized recommendations</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3 id="viewedCount">0</h3>
+                    <p>Schemes Viewed</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="appliedCount">0</h3>
+                    <p>Schemes Applied</p>
+                </div>
+                <div class="stat-card ubs-card"
+                    title="Universal Beneficiary Score: Your readiness for government benefits">
+                    <div class="ubs-score-container">
+                        <h3 id="ubsScore">0</h3>
+                        <span class="ubs-label">UBS</span>
+                    </div>
+                    <p>Beneficiary Score</p>
+                </div>
+                <div class="stat-card">
+                    <h3 id="totalSchemes">0</h3>
+                    <p>Total Available</p>
+                </div>
+            </div>
+
+            <div class="life-journey-section" style="margin-bottom: 2rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3>🛤️ Your Welfare Life Journey</h3>
+                    <button class="btn btn-sm btn-outline" onclick="loadLifeJourney()">Refresh Roadmap</button>
+                </div>
+                <div class="journey-timeline" id="journeyTimeline">
+                    <div class="loading">Mapping your life events to schemes...</div>
+                </div>
+            </div>
+
+            <!-- Economic Mobility Roadmap (Claim M & N) -->
+            <div class="mobility-section"
+                style="margin-bottom: 3rem; background: linear-gradient(135deg, rgba(0, 242, 255, 0.05) 0%, rgba(121, 40, 202, 0.05) 100%); border: 1px solid rgba(0, 242, 255, 0.1); padding: 2rem; border-radius: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                    <h3>🚀 Economic Mobility & ROI</h3>
+                    <button class="btn btn-sm btn-outline" onclick="loadMobilityRoadmap()">Show Growth Path</button>
+                </div>
+                <div id="mobilityRoadmap" class="mobility-grid"
+                    style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                    <div class="roi-card"
+                        style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border);">
+                        <p style="font-size: 0.8rem; opacity: 0.7; margin: 0;">Projected Income Growth</p>
+                        <h2 id="projectedROI" style="margin: 0.5rem 0; color: var(--secondary-color);">₹0</h2>
+                        <span id="roiPercentage" class="badge badge-success">0% ROI</span>
+                    </div>
+                    <div class="path-sequence" id="pathSequence"
+                        style="background: var(--card-bg); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; align-items: center; gap: 1rem;">
+                        <span style="opacity: 0.6;">Apply for common schemes to unlock your personalized economic
+                            graduation path.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document Management Dashboard (Claim G: Intelligent Document Orchestrator) -->
+            <div class="doc-dashboard-section" style="margin-bottom: 2rem;">
+                <!-- 1. Document Overview Widget -->
+                <div class="doc-overview-card"
+                    style="background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-color) 100%); color: white; padding: 2.5rem; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--glass-border); box-shadow: var(--shadow-glow);">
+                    <div>
+                        <h3 style="margin: 0 0 0.5rem 0; font-size: 1.5rem;">📊 Your Smart Document Hub</h3>
+                        <p style="margin: 0; opacity: 0.9; font-size: 0.9rem;">AI-Managed Repository • 2 Claims Pending
+                            • <span id="docTotalCount">0</span> Documents</p>
+                    </div>
+                    <div style="display: flex; gap: 2rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: 700;" id="docVerifiedCount">0</div>
+                            <div style="font-size: 0.8rem; opacity: 0.8;">Verified</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #fca5a5;" id="docExpiringCount">0
+                            </div>
+                            <div style="font-size: 0.8rem; opacity: 0.8;">Expiring</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #fdba74;" id="docMissingCount">0
+                            </div>
+                            <div style="font-size: 0.8rem; opacity: 0.8;">Missing</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" onclick="showUploadModal()">+ Add New</button>
+                </div>
+
+                <!-- 2. Category Tabs & Filter -->
+                <div class="doc-controls"
+                    style="margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                    <div class="doc-tabs" id="docCategoryTabs"
+                        style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 5px;">
+                        <button class="btn btn-sm btn-outline active" onclick="filterDocs('all')">All</button>
+                        <button class="btn btn-sm btn-outline" onclick="filterDocs('Identity')">Identity</button>
+                        <button class="btn btn-sm btn-outline" onclick="filterDocs('Income')">Income</button>
+                        <button class="btn btn-sm btn-outline" onclick="filterDocs('Address')">Address</button>
+                        <button class="btn btn-sm btn-outline" onclick="filterDocs('Education')">Educational</button>
+                        <button class="btn btn-sm btn-outline" onclick="filterDocs('Bank')">Bank</button>
+                    </div>
+                    <div class="doc-search" style="position: relative;">
+                        <input type="text" placeholder="🔍 Search documents..." onkeyup="searchDocs(this.value)"
+                            style="padding: 0.8rem 1.5rem; border-radius: 24px; border: 1px solid var(--glass-border); background: var(--input-bg); color: white; width: 280px; outline: none;">
+                    </div>
+                </div>
+
+                <!-- 3. Missing Documents Alert (Claim G) -->
+                <div id="missingDocsAlert"
+                    style="display: none; margin-top: 1.5rem; background: rgba(253, 186, 116, 0.1); border: 1px solid rgba(253, 186, 116, 0.3); padding: 1rem; border-radius: 12px; display: flex; align-items: center; gap: 1rem;">
+                    <div style="font-size: 1.5rem;">⚠️</div>
+                    <div>
+                        <strong style="color: #fdba74;">Action Required:</strong>
+                        <span id="missingDocsList" style="font-size: 0.9rem; color: #fdba74;">Upload your missing
+                            documents to improve eligibility.</span>
+                    </div>
+                </div>
+
+                <!-- 4. Document Library Grid -->
+                <div id="documentLibrary" class="doc-grid"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <!-- Doc Cards injected via JS -->
+                    <div class="loading">Loading Intelligent Document Library...</div>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <button class="btn btn-primary" onclick="loadRecommendedSchemes()">Refresh Recommendations</button>
+                <button class="btn btn-secondary" onclick="loadAllSchemes()">View All Schemes</button>
+                <button class="btn btn-secondary" onclick="showProfileModal()">Update Profile</button>
+                <button class="btn btn-secondary" id="syncApisetuBtn" onclick="syncFromApiSetu()">Sync from API
+                    Setu</button>
+            </div>
+
+            <div class="schemes-section">
+                <h3>Recommended Schemes for You</h3>
+                <div id="schemesContainer">
+                    <div class="loading">Loading recommendations...</div>
+                </div>
+            </div>
+
+            <!-- Social Credit & FinTech Integration (Claim R & O) -->
+            <div class="fintech-section"
+                style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <div class="social-credit-card"
+                    style="background: var(--card-bg); padding: 2rem; border-radius: 24px; border: 1px solid var(--glass-border); text-align: center;">
+                    <h4 style="margin: 0; opacity: 0.7;">Social Credit Score (Claim R)</h4>
+                    <div style="font-size: 3.5rem; font-weight: 800; color: var(--secondary-color); margin: 1rem 0;"
+                        id="socialCreditScore">---</div>
+                    <div id="riskTier" class="badge">Checking...</div>
+                    <p style="font-size: 0.8rem; margin-top: 1rem;">Lending Limit: <strong id="lendingLimit">₹0</strong>
+                    </p>
+                    <button class="btn btn-sm btn-outline" onclick="loadSocialCredit()">Recalculate Score</button>
+                </div>
+
+                <div class="agent-portal-teaser"
+                    style="background: linear-gradient(135deg, rgba(121, 40, 202, 0.1) 0%, rgba(0, 242, 255, 0.1) 100%); padding: 2rem; border-radius: 24px; border: 1px solid var(--glass-border);">
+                    <h3 style="margin-top: 0;">🤝 Paraditi Agent Portal</h3>
+                    <p>Become a welfare champion in your village and earn for every citizen you assist.</p>
+                    <div id="agentStatus" style="margin-bottom: 1.5rem;">
+                        <span class="badge">Status: Standard User</span>
+                    </div>
+                    <div id="agentActionGrid" style="display: grid; gap: 1rem;">
+                        <button class="btn btn-primary btn-block" onclick="registerAsAgent()" id="joinAgentBtn">Join
+                            Agent Network (Claim P)</button>
+                        <button class="btn btn-success btn-block" onclick="alert('Claim P: Triage Console Loading...')"
+                            id="workAgentBtn" style="display: none;">🚀 Open Triage Workspace</button>
+                        <button class="btn btn-outline btn-block" onclick="leaveAgentProgram()" id="leaveAgentBtn"
+                            style="display: none; border-color: rgba(244, 63, 94, 0.4); color: #f43f5e;">Leave Agent
+                            Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-info">&copy; 2026 P &Lambda; R &Lambda; D I T I (परादिति). All rights reserved. |
+                    Patent Pending: Claims A-U.</p>
+                <div class="footer-founder">
+                    Founder: <span class="founder-name">PARAS AGRAWAL</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scheme Detail Modal -->
+    <div id="schemeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="schemeDetails"></div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfileModal()">&times;</span>
+            <h2>Update Profile</h2>
+            <form id="profileForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profileName">Full Name</label>
+                        <input type="text" id="profileName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileAge">Age</label>
+                        <input type="number" id="profileAge" name="age" min="1" max="120">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profileGender">Gender</label>
+                        <select id="profileGender" name="gender">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileState">State</label>
+                        <select id="profileState" name="state">
+                            <option value="">Select State</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Ladakh">Ladakh</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="profileIncome">Monthly Income (Rs.)</label>
+                        <input type="number" id="profileIncome" name="income" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="profileCategory">Category</label>
+                        <select id="profileCategory" name="category">
+                            <option value="">Select Category</option>
+                            <option value="General">General</option>
+                            <option value="SC">SC (Scheduled Caste)</option>
+                            <option value="ST">ST (Scheduled Tribe)</option>
+                            <option value="OBC">OBC (Other Backward Class)</option>
+                            <option value="EWS">EWS (Economically Weaker Section)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="profileOccupation">Occupation</label>
+                    <select id="profileOccupation" name="occupation">
+                        <option value="">Select Occupation</option>
+                        <option value="Farmer">Farmer</option>
+                        <option value="Student">Student</option>
+                        <option value="Employee">Employee</option>
+                        <option value="Business">Business</option>
+                        <option value="Self Employed">Self Employed</option>
+                        <option value="Unemployed">Unemployed</option>
+                        <option value="Retired">Retired</option>
+                        <option value="Homemaker">Homemaker</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+                </div>
+            </form>
+            <div id="profileErrorMessage" class="error-message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Apply Review Modal -->
+    <div id="applyModal" class="modal">
+        <div class="modal-content" style="max-width: 500px;">
+            <span class="close" onclick="closeApplyModal()">&times;</span>
+            <h2>Review Application</h2>
+            <div id="applicationReviewContent">
+                <p>Review your details before submitting to <strong><span id="applySchemeName"></span></strong>.</p>
+                <div class="review-section"
+                    style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); padding: 1rem; border-radius: 12px; margin: 1rem 0;">
+                    <h4>Applicant Details</h4>
+                    <p><strong>Name:</strong> <span id="reviewName"></span></p>
+                    <p><strong>Age:</strong> <span id="reviewAge"></span></p>
+                    <p><strong>Income:</strong> ₹<span id="reviewIncome"></span></p>
+                </div>
+                <div class="review-section"
+                    style="background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2); padding: 1rem; border-radius: 12px; margin: 1rem 0;">
+                    <h4>Attached Documents (Compressed)</h4>
+                    <ul id="reviewDocsList" style="padding-left: 1.2rem; margin-bottom: 0;"></ul>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+                    <button class="btn btn-secondary" onclick="closeApplyModal()" style="flex: 1;">Cancel</button>
+                    <button class="btn btn-primary" id="confirmApplyBtn" style="flex: 1;">✅ Confirm & Submit</button>
+                </div>
+            </div>
+            <div id="applicationSuccess" style="display: none; text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🎉</div>
+                <h3>Application Submitted!</h3>
+                <p>Your application has been securely transmitted.</p>
+                <p style="background: #eee; padding: 0.5rem; border-radius: 4px; display: inline-block;">Ref ID: <strong
+                        id="successRefId"></strong></p>
+                <button class="btn btn-primary" onclick="closeApplyModal()"
+                    style="display: block; width: 100%; margin-top: 1rem;">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Document Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUploadModal()">&times;</span>
+            <h2>Add New Document</h2>
+            <form id="uploadDocForm" onsubmit="handleUploadSubmit(event)">
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="uploadCategory" name="category" required onchange="updateDocTypes()">
+                        <option value="Identity">Identity Proof</option>
+                        <option value="Income">Income Proof</option>
+                        <option value="Address">Address Proof</option>
+                        <option value="Education">Educational</option>
+                        <option value="Bank">Bank Document</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Document Type</label>
+                    <select id="uploadDocType" name="doc_type" required>
+                        <!-- Populated by JS -->
+                        <option value="Aadhaar Card">Aadhaar Card</option>
+                        <option value="PAN Card">PAN Card</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Select File</label>
+                    <input type="file" id="uploadFile" name="file" required accept=".pdf,.jpg,.jpeg,.png">
+                    <small style="color: #666;">Supported: PDF, JPG, PNG (Max 5MB)</small>
+                </div>
+                <button type="submit" class="btn btn-primary" id="startUploadBtn">Upload & Process</button>
+            </form>
+            <div id="uploadProgress" style="display: none; margin-top: 1rem;">
+                <div style="background: #eee; height: 6px; border-radius: 3px; overflow: hidden;">
+                    <div id="uploadProgressBar"
+                        style="width: 0%; height: 100%; background: var(--primary-color); transition: width 0.3s;">
+                    </div>
+                </div>
+                <p style="text-align: center; font-size: 0.8rem; margin-top: 0.5rem;" id="uploadStatusText">
+                    Compressing...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SAHAJ 3.0: AI Avatar Widget -->
+    <!-- PARADITI 4.0: Aditi AI Experience (Rebuilt) -->
+    <div id="aditi-experience">
+        <!-- Intelligent Trigger (Crystalline Orb) -->
+        <div class="aditi-orb" onclick="toggleAditi()" title="Talk to Aditi">
+            <div class="orb-inner"></div>
+            <div class="orb-ring"></div>
+            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Aditi&backgroundColor=b6e3f4" alt="Aditi"
+                class="orb-avatar">
+        </div>
+
+        <!-- Glassmorphism Main Interface -->
+        <div class="aditi-glass-panel" id="aditiPanel">
+            <!-- Header -->
+            <div class="aditi-glass-header">
+                <div class="header-profile">
+                    <div class="status-dot online"></div>
+                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Aditi&backgroundColor=b6e3f4"
+                        alt="Aditi Profile">
+                    <div class="header-info">
+                        <h3>Aditi AI</h3>
+                        <span>The Limitless Intelligence</span>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="minimizeAditi()">−</button>
+                    <button class="icon-btn" onclick="toggleAditi()">✕</button>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="aditi-glass-body" id="aditiMessages">
+                <!-- Welcome Message -->
+                <div class="chat-message bot">
+                    <div class="message-content">
+                        Namaste! 🙏 I'm Aditi, your personal guide to government schemes.
+                        <br><br>
+                        I can help you find eligibility, apply for loans, or understand benefits in your language.
+                    </div>
+                    <div class="message-time">Just now</div>
+                </div>
+            </div>
+
+            <!-- Quick Suggestions -->
+            <div class="aditi-suggestions" id="aditiSuggestions">
+                <button class="chip" onclick="askAditi('Find schemes for students')">🎓 Student Loans</button>
+                <button class="chip" onclick="askAditi('Farming subsidies')">🌾 Farming</button>
+                <button class="chip" onclick="askAditi('Housing assistance')">🏠 Housing</button>
+                <button class="chip" onclick="askAditi('Check my eligibility')">✅ Eligibility</button>
+            </div>
+
+            <!-- Input Area -->
+            <div class="aditi-glass-footer">
+                <div class="input-wrapper">
+                    <input type="text" id="aditiInput" placeholder="Type or speak in your dialect..."
+                        onkeypress="handleAditiKey(event)">
+                    <button class="mic-btn" onclick="startVoiceDiscovery()" id="aditiMicBtn"
+                        title="Dialect-Adaptive Voice Discovery (Claim I)">🎙️</button>
+                </div>
+                <button class="send-btn" onclick="sendAditiMessage()">
+                    ➤
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
