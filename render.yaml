@@ -18,7 +18,3 @@ services:
         value: prod-jwt-secret-key-hack2skill
       - key: USE_TFIDF
         value: "1"
-    disk:
-      name: sahaj-storage
-      mountPath: /app/instance
-      sizeGB: 1
