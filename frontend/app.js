@@ -4,7 +4,8 @@
    ========================================== */
 
 // --- Configuration & State ---
-const API_BASE_URL = 'http://localhost:5000/api';
+// Use relative path so it works everywhere (Local and Production)
+const API_BASE_URL = '/api';
 let currentUser = JSON.parse(localStorage.getItem('paraditi_user'));
 let authToken = localStorage.getItem('paraditi_token');
 let allUserDocuments = []; // Global store for documents
