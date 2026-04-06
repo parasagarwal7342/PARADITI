@@ -23,8 +23,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy project
 COPY . .
 
-# Create uploads directory
-RUN mkdir -p uploads
+# Create necessary directories
+RUN mkdir -p uploads instance
 
 # Expose port
 EXPOSE 5000
