@@ -34,6 +34,9 @@ Paraditi is built on 21 consolidated patent claims (Claims A-V) that ensure zero
 **The Vision:**  
 We aren't just building an app; we are building a "Social Operating System" for the bottom of the pyramid. P Λ R Λ D I T I transforms citizenship from a status into a measurable, liquid opportunity.
 
+**📽️ Demo Video:**  
+[Link to your Video Project 1.mp4 - Uploaded to YouTube/Drive]
+
 ---
 
 ## Part B: LinkedIn Post (The Social Strategy)
@@ -53,8 +56,9 @@ For years, we've built "listing portals" for government welfare. Today, I’m th
 
 From a "Sahaj" concept to a 21-patent-claim architecture, we are building the "Cyber-Dark" future of digital governance.
 
-**Watch the Demo here:** [Cloud Run URL]
-**Explore the Code:** [GitHub Link]
+**📽️ Watch the Demo:** [YouTube/Drive Link to Video Project 1.mp4]
+**🚀 Live Preview:** [Cloud Run URL]
+**💻 Explore the Code:** [GitHub Link]
 
 #AI #BharatTech #Hack2Skill #DigitalIndia #EconomicMobility #GovTech #LLM #Innovation #Paraditi
 
