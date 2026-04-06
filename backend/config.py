@@ -50,6 +50,8 @@ class ProductionConfig(Config):
     """Production configuration"""
     DEBUG = False
     FLASK_ENV = 'production'
+    # Use in-memory DB for robust, zero-touch hackathon preview
+    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL', 'sqlite://')
 
 class TestingConfig(Config):
     """Testing configuration"""

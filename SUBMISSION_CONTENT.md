@@ -4,35 +4,23 @@ This document contains the narrative components required for the **Hack2Skill** 
 
 ---
 
-## Part A: The Narrative (Blog / Article)
+## Part A: The Narrative (Condensed for Submission)
 
-### Title: *P Λ R Λ D I T I*: Solving the $1.2 Trillion Welfare Access Gap with AI-Native Economic Mobility
+**P Λ R Λ D I T I (परादिति)** is Bharat's first AI-Native Economic Mobility platform, solving the $1.2 Trillion discovery gap in welfare. Unlike passive portals, it acts as an **Intelligent Agent** that guarantees discovery and analyzes eligibility gaps.
 
-**Introduction:**  
-In a country as diverse as Bharat, the challenge isn't just the existence of welfare schemes, but their **accessibility**. Current portals are passive "listing" pages that require high digital literacy. **P Λ R Λ D I T I (परादिति)** is Bharat's first AI-Native Economic Mobility platform designed to bridge this $1.2 Trillion gap. 
+### **Core Tech (21 Patent Claims)**
+- **Aditi AI (Claim I)**: Voice-first discovery in Hindi, Bhojpuri, and Maithili. 
+- **Fallback Mesh (Claim A)**: Cryptographic local mesh ensure zero-downtime when Gov APIs fail.
+- **UBS Score (Claim F)**: Converts welfare history into credit-worthiness for the unbanked.
+- **Benefit Tokenizer (Claim O)**: Leakage-proof e-RUPI vouchers.
 
-**The Problem:**  
-With over 800 million citizens eligible for 1000+ central and state schemes, discovery is a nightmare. Language barriers, complex eligibility criteria, and lack of guidance lead to immense "benefit leakage."
+### **The Build**
+- **Core**: Python 3.12, Flask, SQLAlchemy.
+- **AI/ML**: Sentence-Transformers, Tesseract OCR.
+- **Security**: Argon2, WAF-lite, State Security Mesh (Claim V).
+- **UX**: Premium "Cyber-Dark" Design System with Aditi AI Orb integration.
 
-**The Solution:**  
-P Λ R Λ D I T I evolves from a simple portal into an **Active Agent**. It doesn't just list schemes; it uses **Aditi AI**—a federated intelligence model—to:
-1.  **Guarantee Discovery**: Multi-dialect voice-first discovery (Claim I).
-2.  **Analyze Eligibility Gaps**: Real-time friction detection (Claim K).
-3.  **Guide to Approval**: One-click filing and automated document orchestration (IDO - Claim G).
-
-**Core Innovations (Patent-Ready Architecture):**  
-Paraditi is built on 21 consolidated patent claims (Claims A-V) that ensure zero-downtime and high-fidelity service:
-- **Fallback Mesh (Claim A)**: A cryptographically verified local mesh that hot-swaps when official APIs fail, ensuring uninterrupted access.
-- **UBS Score (Claim F)**: The "Universal Beneficiary Score" converts welfare history into a credit-worthiness rating, unlocking micro-credit for the unbanked.
-- **Benefit Tokenizer (Claim O)**: Issuing e-RUPI linked smart-vouchers that prevent leakage by restricting funds to specific vendor categories.
-
-**Technical Stack:**  
-- **Backend**: Python 3.12+, Flask-Native, SQLAlchemy.
-- **Security**: Argon2, WAF-lite, Hybrid State Security Mesh (Claim V).
-- **Frontend**: Glassmorphism UI (Cyber-Dark System), Aditi AI Orb Integration.
-
-**The Vision:**  
-We aren't just building an app; we are building a "Social Operating System" for the bottom of the pyramid. P Λ R Λ D I T I transforms citizenship from a status into a measurable, liquid opportunity.
+**P Λ R Λ D I T I transforms citizenship into opportunity.** [Demo Video below]
 
 **📽️ Demo Video:**  
 [Link to your Video Project 1.mp4 - Uploaded to YouTube/Drive]

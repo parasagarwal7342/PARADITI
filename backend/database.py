@@ -15,12 +15,18 @@ def init_db(app):
     with app.app_context():
         # Import models to ensure they are registered with SQLAlchemy
         from backend.models import User, Scheme, UserScheme, Document, Application
+        from backend.services.seeder import seed_production_data
         
         # Create all tables
         db.create_all()
+        
+        # Auto-seed in production/ephemeral environments
         try:
-            print("Database initialized successfully!")
-        except (ValueError, OSError):
-            pass  # stdout may be closed in background process
+            db_uri = str(app.config.get('SQLALCHEMY_DATABASE_URI', ''))
+            if 'sqlite://' in db_uri:
+                 seed_production_data()
+            print("Database initialized and auto-seeded successfully!")
+        except Exception as e:
+            print(f"Auto-seed warning: {str(e)}")
     
     return db

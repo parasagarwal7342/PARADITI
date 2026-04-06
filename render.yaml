@@ -10,11 +10,13 @@ services:
     envVars:
       - key: FLASK_ENV
         value: production
-      - key: DATABASE_URL
-        value: sqlite:////app/instance/paraditi.db
       - key: SECRET_KEY
         value: prod-secret-key-hack2skill
       - key: JWT_SECRET_KEY
         value: prod-jwt-secret-key-hack2skill
       - key: USE_TFIDF
         value: "1"
+      - key: TRANSFORMERS_CACHE
+        value: "/tmp/transformers_cache"
+      - key: SIMILARITY_THRESHOLD
+        value: "0.2"
